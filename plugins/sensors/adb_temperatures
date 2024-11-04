@@ -76,6 +76,10 @@ if [ "$1" = "config" ]; then
         echo 'graph_category sensors'
         echo 'graph_info Temperatures of connected Android phone using ADB.'
         for key in "${!arr[@]}"; do
+                divider=${thermal_map[$key]}
+                if [[ -z $divider ]]; then
+                        continue
+                fi
                 type=$key
                 echo "$type.label $type"
         done
